@@ -1,38 +1,118 @@
 /*
- * Copyright (c) 2023 The ZMK Contributors
- *
  * SPDX-License-Identifier: MIT
  */
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 
-/* Uncomment this block if using RGB
-&led_strip {
-    chain-length = <6>;
-    // chain-length = <31>; // Uncomment if using both per-key and underglow LEDs
-    // chain-length = <25>; // Uncomment if using only per-key LEDs.
+#include "est_definitions.h"
+#include "key_shorthands.h"
+
+#define DFLT 0
+#define NAVI 1
+#define SYMB 2
+#define NUMS 3
+#define KEYB 4
+#define FUNC 5
+
+#define _________ &trans
+#define XXXXXXXXX &none
+
+#define EXT_OFF   &ext_power EP_OFF
+#define EXT_ON    &ext_power EP_ON
+#define EXT_TOG   &ext_power EP_TOG
+
+#define SYMB_SPC  &lt SYMB SPACE
+#define NAVI_SPC  &lt NAVI SPACE
+#define NUMS_ENT  &lt NUMS ENTER 
+
+
+ &led_strip {
+     chain-length = <25>; // Uncomment if using only per-key LEDs.
+ };
+
+&lt {
+    flavor = "hold-preferred";
 };
- */
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            // ---------------------------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  Q  |  W  |  E   |  R   |  T   |                                          |  Y   |  U    |  I    |  O   |   P   |   \  |
-            // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                          |  H   |  J    |  K    |  L   |   ;   |   '  |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   | L SHIFT | L SHIFT |  | L SHIFT | L SHIFT |  N   |  M    |  ,    |  .   |   /   | CTRL |
-            //                     | GUI  | DEL  | RET  |  SPACE  |   ESC   |  |   RET   |  SPACE  | TAB  | BSPC  | R-ALT |
+        home_layer {
             bindings = <
-            &kp ESC   &kp Q &kp W &kp E &kp R &kp T                                                &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSLH
-            &kp TAB   &kp A &kp S &kp D &kp F &kp G                                                &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-            &kp LSHFT &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp LSHFT        &kp LSHFT &kp LSHFT &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RCTRL
-            &kp LGUI &kp DEL &kp RET &kp SPACE &kp ESC        &kp RET  &kp SPACE  &kp TAB &kp BSPC &kp RALT
-            >;
+            &kp TAB   &kp   Q   &kp   W   &kp   E   &kp   R   &kp   T                                                 &kp   Y   &kp   U   &kp   I   &kp   O   &kp   P   &kp BSPC
+            &kp LCTRL &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                 &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
+            &kp LSHFT &kp   Z   &kp   X   &kp   C   &kp   V   &kp   B   &kp LEFT  &kp RIGHT       VOLDOWN   VOLUP     &kp   N   &kp   M   &kp COMMA &kp  DOT  &kp FSLH  &kp RSHFT
+                                          &mo KEYB  &kp LALT  NUMS_ENT  NAVI_SPC  &kp ESC         &kp LSHFT SYMB_SPC  &mo FUNC  XXXXXXXXX XXXXXXXXX
+           >;
+        };
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        navigation_layer {
+            bindings = <
+            &kp  TAB  XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              &kp HOME  &kp PG_DN &kp PG_UP &kp  END  XXXXXXXXX _________
+            XXXXXXXXX &kp LMETA &kp LSHFT &kp LCTRL &kp LALT  XXXXXXXXX                                              &kp LEFT  &kp DOWN  &kp  UP   &kp RIGHT EST_ROOFO &kp DEL
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX VOLMUTE   VOLDOWN   VOLUP     PLAYPAUS  EST_DOTDU XXXXXXXXX
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX &kp SPACE XXXXXXXXX XXXXXXXXX XXXXXXXXX
+            >;
+        };
+
+        symbols_layer {
+            bindings = <
+            XXXXXXXXX EST_PRCT  EST_BKTK  EST_LSBR  EST_LABR  EST_SLSH                                               EST_BSLS  EST_RABR  EST_RSBR  EST_AMPR  EST_EURO  _________ 
+            XXXXXXXXX EST_PIPE  EST_DBQT  EST_ASTR  EST_LBRC  EST_LCBR                                               EST_RCBR  EST_RBRC  EST_EQLS  EST_SIQT  EST_DOLR  EST_PLUS
+            XXXXXXXXX EST_CARO  EST_CARE  EST_TLDE  EST_EXCL  EST_ATSI  XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX EST_HSTG  EST_QSTN  EST_SCLN  EST_COLN  EST_USCR  EST_MINS
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX &kp SPACE XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+            >;
+        };
+
+        numbers_layer {
+            bindings = <
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              XXXXXXXXX &kp  N7   &kp  N8   &kp  N9   XXXXXXXXX _________
+            XXXXXXXXX &kp LMETA &kp LSHFT &kp LCTRL &kp LALT  XXXXXXXXX                                              EST_PLUS  &kp  N4   &kp  N5   &kp  N6   EST_ASTR  XXXXXXXXX
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX EST_MINUS &kp  N1   &kp  N2   &kp  N3   EST_SLSH  XXXXXXXXX
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX &kp N0    XXXXXXXXX XXXXXXXXX
+            >;
+        };
+        
+        keyboard_layer {
+            bindings = <
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX EXT_TOG   EXT_ON    EXT_OFF                                                &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &bt BT_SEL 5
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              &bt BT_CLR   XXXXXXXXX    XXXXXXXXX    XXXXXXXXX    XXXXXXXXX    XXXXXXXXX
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX    XXXXXXXXX    XXXXXXXXX    XXXXXXXXX    XXXXXXXXX    XXXXXXXXX
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX    XXXXXXXXX    XXXXXXXXX
+            >;
+        };
+
+        function_layer {
+            bindings = <
+            XXXXXXXXX &kp F9    &kp F10   &kp F11   &kp F12   XXXXXXXXX                                              XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+            XXXXXXXXX &kp F5    &kp F6    &kp F7    &kp F8    XXXXXXXXX                                              XXXXXXXXX &kp LALT  &kp LCTRL &kp LSHFT &kp LMETA XXXXXXXXX
+            XXXXXXXXX &kp F1    &kp F2    &kp F3    &kp F4    XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+            >;
         };
     };
 };
+
+        // LAYER TEMPLATES
+
+        // layer_name {
+        //     bindings = <
+        //     _________ _________ _________ _________ _________ _________                                              _________ _________ _________ _________ _________ _________
+        //     _________ _________ _________ _________ _________ _________                                              _________ _________ _________ _________ _________ _________
+        //     _________ _________ _________ _________ _________ _________ _________ _________      _________ _________ _________ _________ _________ _________ _________ _________
+        //                                   _________ _________ _________ _________ _________      _________ _________ _________ _________ _________
+        //     >;
+        // };
+
+        // layer_name {
+        //     bindings = <
+        //     XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+        //     XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+        //     XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+        //                                   XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
+        //     >;
+        // };
