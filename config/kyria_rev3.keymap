@@ -24,7 +24,7 @@
 #define EXT_ON    &ext_power EP_ON
 #define EXT_TOG   &ext_power EP_TOG
 
-#define SYMB_SPC  &lt SYMB SPACE
+#define SYMB_BSPC &lt SYMB BSPC
 #define NAVI_SPC  &lt NAVI SPACE
 #define NUMS_ENT  &lt NUMS ENTER 
 #define KEY_META  &lt KEYB LMETA
@@ -44,10 +44,10 @@
 
         home_layer {
             bindings = <
-            &kp TAB   &kp   Q   &kp   W   &kp   E   &kp   R   &kp   T                                                 &kp   Y   &kp   U   &kp   I   &kp   O   &kp   P   &kp BSPC
-            &kp LMETA &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                 &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
+            &kp TAB   &kp   Q   &kp   W   &kp   E   &kp   R   &kp   T                                                 &kp   Y   &kp   U   &kp   I   &kp   O   &kp   P   XXXXXXXXX
+            &kp LCTRL &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                 &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
             &kp LSHFT &kp   Z   &kp   X   &kp   C   &kp   V   &kp   B   &kp LEFT  &kp RIGHT       VOLDOWN   VOLUP     &kp   N   &kp   M   &kp COMMA &kp  DOT  &kp FSLH  &kp RSHFT
-                                          &kp LCTRL &kp LALT  NUMS_ENT  NAVI_SPC  &kp ESC         &kp LCTRL SYMB_SPC  &mo FUNC  XXXXXXXXX KEY_META
+                                          &kp LMETA &kp LALT  NUMS_ENT  NAVI_SPC  &kp ESC         XXXXXXXXX SYMB_BSPC  &mo FUNC  XXXXXXXXX KEY_META
            >;
         };
 
@@ -56,7 +56,7 @@
             &kp  TAB  XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              &kp PG_DN &kp HOME  &kp PG_UP &kp  END  XXXXXXXXX _________
             XXXXXXXXX &kp LSHFT &kp LCTRL &kp LALT  &kp LMETA XXXXXXXXX                                              &kp LEFT  &kp DOWN  &kp  UP   &kp RIGHT EST_ROOFO &kp DEL
             XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX &kp PG_UP  VOLDOWN   VOLUP    PLAYPAUS  EST_DOTDU XXXXXXXXX
-                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX &kp SPACE XXXXXXXXX XXXXXXXXX VOLMUTE
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX &kp BSPC  XXXXXXXXX XXXXXXXXX VOLMUTE
             >;
         };
 
@@ -95,6 +95,16 @@
                                           XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX
             >;
         };
+    };
+    
+    combos {
+      compatible = "zmk,combos";
+      combo_esc {
+	timeout-ms = <30>;
+	key-positions = <2 3>;
+	bindings = <&kp ESC>;
+	require-prior-idle-ms = <150>;
+      };
     };
 };
 
