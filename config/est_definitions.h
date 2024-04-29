@@ -1,8 +1,8 @@
 //Special characters for estonian keyboard layout
-#define EST_DOTTED_O                 &kp SEMICOLON 
-#define EST_ROOF_O                   &kp RIGHT_BRACKET
-#define EST_DOTTED_A                 &kp APOSTROPHE
-#define EST_DOTTED_U                 &kp LEFT_BRACKET
+#define ODIA                         &kp SEMICOLON 
+#define OTIL                         &kp RIGHT_BRACKET
+#define ADIA                         &kp APOSTROPHE
+#define UDIA	                     &kp LEFT_BRACKET
 #define EST_DASH                     &kp SLASH
 #define EST_LEFT_ANGLE_BRACKET       &kp NUBS
 #define EST_RIGHT_ANGLE_BRACKET      &kp LS(NUBS)
@@ -37,12 +37,6 @@
 #define EST_TILDE                    &kp LS(GRAVE)
 #define EST_CARON                    &kp GRAVE
 #define EST_EURO                     &kp RA(N5)
-
-// Shorthands
-#define EST_DOTDO                    EST_DOTTED_O
-#define EST_ROOFO                    EST_ROOF_O
-#define EST_DOTDA                    EST_DOTTED_A
-#define EST_DOTDU                    EST_DOTTED_U
 
 // Brackets
 #define EST_LABR                     EST_LEFT_ANGLE_BRACKET
