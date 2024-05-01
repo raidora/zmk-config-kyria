@@ -1,7 +1,7 @@
 //Special characters for estonian keyboard layout
 #define ODIA                         &kp SEMICOLON 
 #define OTIL                         &kp RIGHT_BRACKET
-#define ADIA                         &kp APOSTROPHE
+#define EE_ADIA                         &kp APOSTROPHE
 #define UDIA	                     &kp LEFT_BRACKET
 #define EST_DASH                     &kp SLASH
 #define EST_LEFT_ANGLE_BRACKET       &kp NUBS

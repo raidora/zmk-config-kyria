@@ -41,7 +41,7 @@
     combo_adia {
       timeout-ms = <200>;
       key-positions = <21 22>;
-      bindings = <&kp ADIA>;
+      bindings = <&kp EE_ADIA>;
     };
     combo_left_middle {
       timeout-ms = <200>;
