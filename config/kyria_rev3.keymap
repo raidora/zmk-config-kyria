@@ -39,6 +39,15 @@
 };
 
 / {
+  combos { 
+    compatible = "zmk,combos";
+    combo_left_middle {
+      timeout-ms = <200>;
+      key-positions = <14 15 16>;
+      bindings = <&mo NUMS>;
+    };
+  };
+
     keymap {
         compatible = "zmk,keymap";
 
