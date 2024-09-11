@@ -24,7 +24,7 @@
 #define EXT_ON    &ext_power EP_ON
 #define EXT_TOG   &ext_power EP_TOG
 
-#define SYMB_SPC  &lt SYMB SPACE
+#define SYMB_ESC  &lt SYMB ESC
 #define NAVI_SPC  &lt NAVI SPACE
 #define NUMS_ENT  &lt NUMS ENTER 
 #define KEY_META  &lt KEYB LMETA
@@ -47,7 +47,7 @@
             &kp TAB   &kp   Q   &kp   W   &kp   E   &kp   R   &kp   T                                                 &kp   Y   &kp   U   &kp   I   &kp   O   &kp   P   &kp BSPC
             &kp LMETA &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                 &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
             &kp LSHFT &kp   Z   &kp   X   &kp   C   &kp   V   &kp   B   &kp LEFT  &kp RIGHT       VOLDOWN   VOLUP     &kp   N   &kp   M   &kp COMMA &kp  DOT  &kp FSLH  &kp RSHFT
-                                          &kp LCTRL &kp LALT  NUMS_ENT  NAVI_SPC  &kp ESC         &kp ESC SYMB_SPC  &kp BSPC  XXXXXXXXX KEY_META
+                                          &kp LCTRL &kp LALT  NUMS_ENT  NAVI_SPC  &kp ESC         &kp ESC SYMB_ESC  &kp BSPC  XXXXXXXXX KEY_META
            >;
         };
 
