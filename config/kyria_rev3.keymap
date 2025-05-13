@@ -17,8 +17,10 @@
 #define KEYB 4
 #define FUNC 5
 
-#define _________ &trans
 #define XXXXXXXXX &none
+#define _________ &trans
+#define XXXXXX &none
+#define ______ &trans
 
 #define EXT_OFF   &ext_power EP_OFF
 #define EXT_ON    &ext_power EP_ON
@@ -26,37 +28,44 @@
 
 #define SYMB_ESC &lt SYMB ESC
 #define NAVI_SPC  &lt NAVI SPACE
-#define NUMS_ENT  &lt NUMS ENTER 
 #define KEY_META  &lt KEYB LMETA
 
-
- &led_strip {
-     chain-length = <25>; // Uncomment if using only per-key LEDs.
- };
+&led_strip {
+  chain-length = <25>; // Uncomment if using only per-key LEDs.
+};
 
 &lt {
     flavor = "hold-preferred";
 };
 
 / {
+    combos { 
+      compatible = "zmk,combos";
+      combo_left_middle {
+	timeout-ms = <200>;
+	key-positions = <14 15 16>;
+	bindings = <&mo NUMS>;
+      };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         home_layer {
             bindings = <
-            &kp TAB   &kp   Q   &kp   W   &kp   E   &kp   R   &kp   T                                                &kp   Y   &kp   U   &kp   I   &kp   O   &kp   P   &kp BSPC
-            &kp LCTRL &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
-            &kp LSHFT &kp   Z   &kp   X   &kp   C   &kp   V   &kp   B  &kp LEFT   &kp RIGHT       VOLDOWN   VOLUP    &kp   N   &kp   M   &kp COMMA &kp  DOT  &kp FSLH  &kp RSHFT
-                                          &kp LMETA &kp LALT  NUMS_ENT  &kp SPACE  &mo NAVI        &mo SYMB  &kp ESC  &kp BSPC  XXXXXXXXX KEY_META
+            &kp TAB   &kp   Q   &kp   W   &kp   E   &kp   R   &kp   T                                                 &kp   Y   &kp   U   &kp   I   &kp   O   &kp   P   &kp BSPC
+            &kp LSHFT &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                 &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
+            &kp LCTRL &kp   Z   &kp   X   &kp   C   &kp   V   &kp   B   &kp LEFT   &kp RIGHT       XXXXXX    XXXXXX   &kp   N   &kp   M   &kp COMMA &kp  DOT  &kp FSLH  &kp RSHFT
+                                          &kp LALT &kp LMETA  &kp ENTER &kp SPACE  &mo NAVI        &mo SYMB  &kp ESC  &kp BSPC  XXXXXX    KEY_META
            >;
         };
 
         navigation_layer {
             bindings = <
-            &kp  TAB  XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              &kp PG_DN &kp HOME  &kp PG_UP &kp  END  XXXXXXXXX _________
-            XXXXXXXXX &kp LSHFT &kp LCTRL &kp LALT  &kp LMETA XXXXXXXXX                                              &kp LEFT  &kp DOWN  &kp  UP   &kp RIGHT EST_ROOFO &kp DEL
-            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX &kp PG_UP  VOLDOWN   VOLUP    PLAYPAUS  EST_DOTDU XXXXXXXXX
-                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX &kp BSPC  XXXXXXXXX XXXXXXXXX VOLMUTE
+            &kp  TAB  XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              &kp PG_UP  &kp HOME  &kp UP    &kp  END  XXXXXX    _________
+            XXXXXXXXX &kp LSHFT &kp LCTRL &kp LALT  &kp LMETA XXXXXXXXX                                              &kp PG_DN  &kp LEFT  &kp  DOWN &kp RIGHT EST_ROOFO &kp DEL
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXX     VOLDOWN   PLAYPAUS  VOLUP     EST_DOTDU XXXXXX
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX &kp BSPC  XXXXXX     XXXXXX VOLMUTE
             >;
         };
 
