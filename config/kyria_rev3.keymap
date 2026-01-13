@@ -54,9 +54,9 @@
         home_layer {
             bindings = <
             &kp TAB   &kp   Q   &kp   W   &kp   E   &kp   R   &kp   T                                                 &kp   Y   &kp   U   &kp   I   &kp   O   &kp   P   &kp BSPC
-            &kp LSHFT &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                 &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
+            &kp LMETA &kp   A   &kp   S   &kp   D   &kp   F   &kp   G                                                 &kp   H   &kp   J   &kp   K   &kp   L   EST_DOTDO EST_DOTDA
             &kp LCTRL &kp   Z   &kp   X   &kp   C   &kp   V   &kp   B   &kp LEFT   &kp RIGHT       XXXXXX    XXXXXX   &kp   N   &kp   M   &kp COMMA &kp  DOT  &kp FSLH  &kp RSHFT
-                                          &kp LALT &kp LMETA  &kp ENTER &kp SPACE  &mo NAVI        &mo SYMB  SYMB_ESC &kp BSPC  XXXXXX    KEY_META
+                                          &kp LALT &kp LMETA  &kp ENTER &kp SPACE  &mo NAVI        &kp ESC  &mo SYMB &kp BSPC  XXXXXX    KEY_META
            >;
         };
 

@@ -36,7 +36,7 @@
 #define EST_PERCENT                  &kp LS(N5)
 #define EST_TILDE                    &kp LS(GRAVE)
 #define EST_CARON                    &kp GRAVE
-#define EST_EURO                     &kp RA(N5)
+#define EST_EURO                     &kp LS(N4)
 
 // Shorthands
 #define EST_DOTDO                    EST_DOTTED_O
