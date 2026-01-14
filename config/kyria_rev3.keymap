@@ -62,10 +62,10 @@
 
         navigation_layer {
             bindings = <
-            &kp  TAB  XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              &kp PG_UP  &kp HOME  &kp UP    &kp  END  XXXXXX    _________
-            XXXXXXXXX &kp LSHFT &kp LCTRL &kp LALT  &kp LMETA XXXXXXXXX                                              &kp PG_DN  &kp LEFT  &kp  DOWN &kp RIGHT EST_ROOFO &kp DEL
-            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXX     VOLDOWN   PLAYPAUS  VOLUP     EST_DOTDU XXXXXX
-                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX &kp BSPC  XXXXXX     XXXXXX VOLMUTE
+            &kp  TAB  XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX                                              &kp HOME  &kp PG_DN  &kp PG_UP  &kp  END  XXXXXX    _________
+            XXXXXXXXX &kp LSHFT &kp LCTRL &kp LALT  &kp LMETA XXXXXXXXX                                              &kp LEFT  &kp DOWN   &kp  UP    &kp RIGHT EST_ROOFO &kp DEL
+            XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX XXXXXXXXX XXXXXX    VOLDOWN    PLAYPAUS   VOLUP     EST_DOTDU XXXXXX
+                                          XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX XXXXXXXXX      XXXXXXXXX PLAYPAUS  XXXXXX    XXXXXX     VOLMUTE
             >;
         };
 
